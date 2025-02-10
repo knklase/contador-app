@@ -27,7 +27,7 @@ export default function App() {
           <input
             type="text"
             placeholder="Usuario"
-            value={knklase}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
             style={{ margin: "5px", padding: "5px" }}
           />
@@ -35,7 +35,7 @@ export default function App() {
           <input
             type="password"
             placeholder="Contraseña"
-            value={123456}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={{ margin: "5px", padding: "5px" }}
           />
