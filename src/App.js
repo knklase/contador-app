@@ -16,7 +16,7 @@ export default function App() {
   };
 
   const shareOnWhatsApp = () => {
-    const whatsappUrl = `https://wa.me/?text=He%20seleccionado%20el%20número%20${selectedNumber}`;
+    const whatsappUrl = `https://wa.me/?text=Te%20quiero%20un%20${selectedNumber}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -25,33 +25,39 @@ export default function App() {
       {isLoggedIn ? (
         <div>
           <h1>¡Hola {username}!</h1>
-          <h2>Selecciona un número del 1 al 10:</h2>
-          <select
-            value={selectedNumber || ""}
-            onChange={(e) => setSelectedNumber(e.target.value)}
-            style={{ padding: "5px", fontSize: "16px", marginBottom: "10px" }}
-          >
-            <option value="" disabled>
-              Elige un número
-            </option>
+          <h2>Selecciona un número para compartir:</h2>
+          <div style={{ marginBottom: "15px" }}>
             {[...Array(10)].map((_, index) => (
-              <option key={index + 1} value={index + 1}>
+              <button
+                key={index + 1}
+                onClick={() => setSelectedNumber(index + 1)}
+                style={{
+                  backgroundColor:
+                    selectedNumber === index + 1 ? "#ff69b4" : "#f0f0f0",
+                  color: selectedNumber === index + 1 ? "white" : "black",
+                  border: "1px solid #ddd",
+                  padding: "10px 15px",
+                  margin: "5px",
+                  fontSize: "16px",
+                  cursor: "pointer",
+                  borderRadius: "8px",
+                }}
+              >
                 {index + 1}
-              </option>
+              </button>
             ))}
-          </select>
-          <br />
+          </div>
           <button
             onClick={shareOnWhatsApp}
             disabled={!selectedNumber}
             style={{
-              backgroundColor: "#25D366",
+              backgroundColor: "#ff69b4",
               color: "white",
               border: "none",
               padding: "10px 20px",
               fontSize: "16px",
               cursor: selectedNumber ? "pointer" : "not-allowed",
-              marginTop: "10px",
+              borderRadius: "10px",
             }}
           >
             Compartir en WhatsApp
